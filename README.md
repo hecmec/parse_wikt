@@ -1,7 +1,7 @@
 # parse_wikt
 Experminente mit wiktionary data api
 
-the wiktionary api returns json, but the main part is just unstructured text
+the wiktionary api returns json, but the rawContent of the Translation part is just unstructured text
 
 	{
 	  "English": {
