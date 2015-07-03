@@ -1,0 +1,555 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>parse Text</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="teststyle.css">
+
+<!--[if IE]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--
+this parses the result of a call to the Wiktionary api 
+the result is an object of the structure
+
+{
+  "English": {
+    "Etymology": {
+      "rawContent": "\nFrom {{etyl|frm|en}} {{term|sublime||lang=frm}}, from {{etyl|la|en}} {{term/t|la|sublīmis||high}}, from {{term|sub-||lang=la|up to\", \"upwards}} + uncertain, often identified with {{etyl|la|en}} {{term/t|la|līmis}}, ablative singular of {{term/t|la|līmus||oblique}} or {{term/t|la|līmen||threshold\", \"entrance\", \"lintel}}\n\n"
+    },
+    "Pronunciation": {
+      "rawContent": "\n* {{audio|en-us-sublime.ogg|Audio (US)}}\n* {{rhymes|aɪm}}\n\n"
+    },
+    "Adjective": {
+      "Translations": {
+        "rawContent": "\n{{trans-top|noble and majestic}}\n	* French: {{t+|fr|sublime}}\n * German: {{t+|de|hehr}}, {{t+|de|erhaben}}, {{t+|de|nobel}}, {{t+|de|sublim}}\n * Russian: {{t+|ru|возвышенный|tr=vozvýšennyj|sc=Cyrl}}, {{t+|ru|величественный|tr=velíčestvennyj|sc=Cyrl}}\n* Spanish: {{t+|es|sublime}}\n{{trans-bottom}}
+		{{trans-top|impressive and awe-inspiring}}\n * German: {{t+|de|grandios}}, {{t|de|vortrefflich}}\n * Hungarian: {{t+|hu|fenséges}}, {{t+|hu|emelkedett}}, {{t+|hu|fennkölt}}, {{t+|hu|magasztos}}\n
+		"Senses": [
+		"noble and majestic": {
+			"French":["sublime"],
+			"German": ["hehr","erhaben","nobel","sublim"],
+			"Russian": ["возвышенный","величественный"],
+			"Spanish": ["sublime"],
+		},
+		"impressive and awe-inspiring": {
+			"German": ["grandios","vortrefflich"]
+		}
+		]
+      }
+    },
+    "Noun": {
+      "Translations": {
+        "rawContent": "\n{{trans-top|something sublime}}\n* German: {{t|de|Erhabene|n}}\n* Portuguese: {{t+|pt|sublime|m}}\n{{trans-mid}}\n* Russian: {{t|ru|возвышенное|n}}\n{{trans-bottom}}\n\n"
+      }
+    },
+    "Verb": {
+      "Related terms": {
+        "rawContent": "\n* [[sublimation]]\n\n"
+      },
+      "Translations": {
+        "rawContent": "\n{{trans-top|to sublimate}}\n* Danish: {{t|da|sublimere}}\n* Finnish: {{t|fi|sublimoitua}}\n* French: {{t+|fr|sublimer}}\n* German: {{t+|de|sublimieren}}\n* Macedonian: {{t|mk|возвишува|tr=vozvíšuva}}, {{t|mk|сублимира|tr=sublimíra}}\n* Russian: {{t+|ru|сублимировать}}, {{t+|ru|возгонять}}\n{{trans-mid}}\n* Serbo-Croatian:\n*: Cyrillic: {{t|sh|у̀звӣшен|m}}\n*: Roman: {{t|sh|ùzvīšen|m}}\n* Slovene: {{t+|sl|veličasten}}\n* Spanish: {{t+|es|sublimar}}\n{{trans-bottom}}\n\n"
+      }
+    },
+    "Anagrams": {
+      "rawContent": "\n* [[blueism#English|blueism]]\n\n----\n\n"
+    }
+  },
+  "Danish": {
+    "Adjective": {
+      "rawContent": "\n{{head|da|adjective form}}\n\n# {{form of|definite|sublim|lang=da}}\n# {{plural of|sublim|lang=da}}\n\n----\n\n"
+    }
+  },
+  "French": {
+    "Pronunciation": {
+      "rawContent": "\n* {{audio|Fr-sublime.ogg|Audio}}\n\n"
+    },
+    "Adjective": {
+      "rawContent": "\n{{fr-adj|mf}}\n\n# [[#English|sublime]], [[extraordinary]]\n\n"
+    },
+    "Verb": {
+      "rawContent": "\n{{fr-verb-form}}\n\n# {{conjugation of|sublimer||1|s|pres|ind|lang=fr}}\n# {{conjugation of|sublimer||3|s|pres|ind|lang=fr}}\n# {{conjugation of|sublimer||1|s|pres|sub|lang=fr}}\n# {{conjugation of|sublimer||3|s|pres|sub|lang=fr}}\n# {{conjugation of|sublimer||2|s|imp|lang=fr}}\n\n----\n\n"
+    }
+  },
+  "Italian": {
+    "Adjective": {
+      "rawContent": "\n{{it-adj|sublim|e|i}}\n\n# [[#English|sublime]]\n\n====Related terms====\n* [[sublimità]]\n\n----\n\n"
+    }
+  },
+  "Latin": {
+    "Adjective": {
+      "rawContent": "\n{{la-adj-form|sublīme}}\n\n# {{inflection of|sublīmus||voc|m|s|lang=la}}\n\n----\n\n"
+    }
+  },
+  "Portuguese": {
+    "Etymology": {
+      "rawContent": "\nFrom {{etyl|la|pt}} {{term/t|la|sublīmis}}.\n\n"
+    },
+    "Pronunciation": {
+      "rawContent": "\n* {{a|Brazil}} {{IPA|/su.ˈbli.mɪ/|lang=pt}}\n* {{a|PT}} {{IPA|/su.ˈbli.mɨ/|lang=pt}}\n* {{hyphenation|su|bli|me|lang=pt}}\n\n"
+    },
+    "Adjective": {
+      "rawContent": "\n'''sublime''' {{g|m}} and {{g|f}} (''plural'' '''[[sublimes]]''')\n\n# [[#English|sublime]].\n\n"
+    },
+    "Noun": {
+      "rawContent": "\n'''sublime''' {{g|m}} and {{g|f}} (''plural'' '''[[sublimes]]''')\n\n# [[#English|sublime]].\n\n"
+    },
+    "Verb": {
+      "rawContent": "\n{{pt-verb-form}}\n\n# First-person singular subjunctive present of [[sublimar]].\n# Third-person singular subjunctive present of [[sublimar]].\n# Third-person singular afirmative imperative of [[sublimar]].\n# Third-person singular negative imperative of [[sublimar]].\n\n"
+    },
+    "Related terms": {
+      "rawContent": "\n{{top2}}\n* [[sublimação]]\n* [[sublimado]]\n* [[sublimar]]\n{{mid2}}\n* [[sublimável]]\n* [[sublimidade]]\n{{bottom}}\n\n[[Category:Portuguese adjectives]]\n[[Category:Portuguese nouns]]\n\n----\n\n"
+    }
+  },
+  "Spanish": {
+    "rawContent": "\n\n===Adjective===\n{{es-adj}}\n\n# [[#English|sublime]]\n\n===Verb===\n{{es-verb-form|sublimar}}\n\n# {{es-verb form of|ending=ar|mood=imperative|pers=2|formal=yes|number=singular|sublimar}}\n# {{es-verb form of|ending=ar|mood=subjunctive|tense=present|pers=1|number=singular|sublimar}}\n# {{es-verb form of|ending=ar|mood=subjunctive|tense=present|pers=2|formal=yes|number=singular|sublimar}}\n# {{es-verb form of|ending=ar|mood=subjunctive|tense=present|pers=3|number=singular|sublimar}}\n\n[[ca:sublime]]\n[[de:sublime]]\n[[et:sublime]]\n[[el:sublime]]\n[[es:sublime]]\n[[fa:sublime]]\n[[fr:sublime]]\n[[ko:sublime]]\n[[io:sublime]]\n[[it:sublime]]\n[[kn:sublime]]\n[[ku:sublime]]\n[[li:sublime]]\n[[hu:sublime]]\n[[ml:sublime]]\n[[my:sublime]]\n[[pl:sublime]]\n[[pt:sublime]]\n[[ru:sublime]]\n[[fi:sublime]]\n[[sv:sublime]]\n[[ta:sublime]]\n[[te:sublime]]\n[[chr:sublime]]\n[[vi:sublime]]\n[[zh:sublime]]\n\t\t\t\n\t\t\t"
+  }
+}
+
+-->
+
+</head>
+<body>
+
+
+<div id="pageContainer">
+	<header id="pageHeader">
+	    <h1>parser WK</h1>
+	</header>
+    <div id="contentContainer" class="clearfix">
+		<div>
+			<textarea id="tarRaw" style="width:800px;height:100px"  >
+{{also|sublimé}}
+==English==
+
+===Etymology===
+From {{etyl|frm|en}} {{term|sublime||lang=frm}}, from {{etyl|la|en}} {{term/t|la|sublīmis||high}}, from {{term|sub-||lang=la|up to", "upwards}} + uncertain, often identified with {{etyl|la|en}} {{term/t|la|līmis}}, ablative singular of {{term/t|la|līmus||oblique}} or {{term/t|la|līmen||threshold", "entrance", "lintel}}
+
+===Pronunciation===
+* {{audio|en-us-sublime.ogg|Audio (US)}}
+* {{rhymes|aɪm}}
+
+===Adjective===
+{{en-adj|er}}
+
+# [[noble|Noble]] and [[majestic]].
+#* De Quincey
+#*: the '''sublime''' Julian leader
+# [[impressive|Impressive]] and [[awe-inspiring]].
+#: '''''sublime''' scenery; a '''sublime''' deed''
+#* Prior
+#*: Easy in words thy style, in sense '''sublime'''.
+#* Longfellow
+#*: Know how '''sublime''' a thing it is / To suffer and be strong.
+# {{context|obsolete|lang=en}} Lifted up; high in place; exalted aloft; uplifted; lofty.
+#* Dryden
+#*: '''Sublime''' on these a tower of steel is reared.
+# {{context|obsolete|lang=en}} Elevated by joy; elated.
+#* Milton
+#*: Their hearts were jocund and '''sublime''', / Drunk with idolatry, drunk with wine.
+# Lofty of mien; haughty; proud.
+#* Spenser
+#*: countenance '''sublime''' and insolent
+#* Milton
+#*: His fair, large front and eye '''sublime''' declared / Absolute rule.
+
+====Translations====
+{{trans-top|noble and majestic}}
+* Armenian: {{t|hy|վեհ|tr=veh}}
+* Catalan: {{t|ca|sublim}}
+* Chinese:
+*: Mandarin: {{t+|cmn|崇高|tr=chónggāo|sc=Hani}}
+* Czech: {{t|cs|vznešený}}
+* Danish: {{t|da|sublim}}
+* Finnish: {{t|fi|ylevä}}, {{t|fi|ylhäinen}}
+* French: {{t+|fr|sublime}}
+* German: {{t+|de|hehr}}, {{t+|de|erhaben}}, {{t+|de|nobel}}, {{t+|de|sublim}}
+* Hungarian: {{t+|hu|nemes}}, {{t+|hu|előkelő}}
+* Japanese: {{t+|ja|崇高|tr=すうこう, sūkō|sc=Jpan}}, {{t|ja|高邁|tr=こうまい, kōmai|sc=Jpan}}
+{{trans-mid}}
+* Korean: {{t|ko|숭고한|tr=sunggohan|sc=Kore}}
+* Macedonian: {{t|mk|возвишен|m|tr=vózvišen}}
+* Polish: {{t|pl|wzniosły}}
+* Portuguese: {{t+|pt|sublime}}
+* Russian: {{t+|ru|возвышенный|tr=vozvýšennyj|sc=Cyrl}}, {{t+|ru|величественный|tr=velíčestvennyj|sc=Cyrl}}
+* Serbo-Croatian:
+*: Cyrillic: {{t|sh|у̀звӣшен|m}}
+*: Roman: {{t|sh|ùzvīšen|m}}
+* Spanish: {{t+|es|sublime}}
+{{trans-bottom}}
+
+{{trans-top|impressive and awe-inspiring}}
+* Armenian: {{t|hy|վեհ|tr=veh}}
+* Catalan: {{t|ca|sublim}}
+* Finnish: {{t|fi|hämmästyttävä}}
+* German: {{t+|de|grandios}}, {{t|de|vortrefflich}}
+* Greek: {{t+|el|επιβλητικός|tr=epivlitikós|sc=Grek}}
+{{trans-mid}}
+* Hungarian: {{t+|hu|fenséges}}, {{t+|hu|emelkedett}}, {{t+|hu|fennkölt}}, {{t+|hu|magasztos}}
+* Macedonian: {{t|mk|возвишен|m|tr=vózvišen}}
+* Russian: {{t+|ru|впечатляющий|tr=vpečatljájuščij}}, {{t+|ru|потрясающий|tr=potrjasájuščij}}
+* Spanish: {{t+|es|sublime}}, {{t|es|portentoso}}
+{{trans-bottom}}
+
+===Noun===
+{{en-noun}}
+
+# something sublime
+
+====Translations====
+{{trans-top|something sublime}}
+* German: {{t|de|Erhabene|n}}
+* Portuguese: {{t+|pt|sublime|m}}
+{{trans-mid}}
+* Russian: {{t|ru|возвышенное|n}}
+{{trans-bottom}}
+
+===Verb===
+{{en-verb|sublim|ing}}
+
+# {{context|chemistry|physics|lang=en}} To [[sublimate]].
+# To raise on high.
+#* E. P. Whipple
+#*: A soul '''sublimed''' by an idea above the region of vanity and conceit.
+# To exalt; to heighten; to improve; to purify.
+#* Alexander Pope
+#*: The sun {{...}} / Which not alone the southern wit '''sublimes''', / But ripens spirits in cold, northern climes.
+# To dignify; to ennoble.
+#* Jeremy Taylor
+#*: An ordinary gift cannot '''sublime''' a person to a supernatural employment.
+
+====Related terms====
+* [[sublimation]]
+
+====Translations====
+{{trans-top|to sublimate}}
+* Danish: {{t|da|sublimere}}
+* Finnish: {{t|fi|sublimoitua}}
+* French: {{t+|fr|sublimer}}
+* German: {{t+|de|sublimieren}}
+* Macedonian: {{t|mk|возвишува|tr=vozvíšuva}}, {{t|mk|сублимира|tr=sublimíra}}
+* Russian: {{t+|ru|сублимировать}}, {{t+|ru|возгонять}}
+{{trans-mid}}
+* Serbo-Croatian:
+*: Cyrillic: {{t|sh|у̀звӣшен|m}}
+*: Roman: {{t|sh|ùzvīšen|m}}
+* Slovene: {{t+|sl|veličasten}}
+* Spanish: {{t+|es|sublimar}}
+{{trans-bottom}}
+
+===Anagrams===
+* [[blueism#English|blueism]]
+
+----
+
+==Danish==
+
+===Adjective===
+{{head|da|adjective form}}
+
+# {{form of|definite|sublim|lang=da}}
+# {{plural of|sublim|lang=da}}
+
+----
+
+==French==
+
+===Pronunciation===
+* {{audio|Fr-sublime.ogg|Audio}}
+
+===Adjective===
+{{fr-adj|mf}}
+
+# [[#English|sublime]], [[extraordinary]]
+
+===Verb===
+{{fr-verb-form}}
+
+# {{conjugation of|sublimer||1|s|pres|ind|lang=fr}}
+# {{conjugation of|sublimer||3|s|pres|ind|lang=fr}}
+# {{conjugation of|sublimer||1|s|pres|sub|lang=fr}}
+# {{conjugation of|sublimer||3|s|pres|sub|lang=fr}}
+# {{conjugation of|sublimer||2|s|imp|lang=fr}}
+
+----
+
+==Italian==
+
+===Adjective===
+{{it-adj|sublim|e|i}}
+
+# [[#English|sublime]]
+
+====Related terms====
+* [[sublimità]]
+
+----
+
+==Latin==
+
+===Adjective===
+{{la-adj-form|sublīme}}
+
+# {{inflection of|sublīmus||voc|m|s|lang=la}}
+
+----
+
+==Portuguese==
+
+===Etymology===
+From {{etyl|la|pt}} {{term/t|la|sublīmis}}.
+
+===Pronunciation===
+* {{a|Brazil}} {{IPA|/su.ˈbli.mɪ/|lang=pt}}
+* {{a|PT}} {{IPA|/su.ˈbli.mɨ/|lang=pt}}
+* {{hyphenation|su|bli|me|lang=pt}}
+
+===Adjective===
+'''sublime''' {{g|m}} and {{g|f}} (''plural'' '''[[sublimes]]''')
+
+# [[#English|sublime]].
+
+===Noun===
+'''sublime''' {{g|m}} and {{g|f}} (''plural'' '''[[sublimes]]''')
+
+# [[#English|sublime]].
+
+===Verb===
+{{pt-verb-form}}
+
+# First-person singular subjunctive present of [[sublimar]].
+# Third-person singular subjunctive present of [[sublimar]].
+# Third-person singular afirmative imperative of [[sublimar]].
+# Third-person singular negative imperative of [[sublimar]].
+
+===Related terms===
+{{top2}}
+* [[sublimação]]
+* [[sublimado]]
+* [[sublimar]]
+{{mid2}}
+* [[sublimável]]
+* [[sublimidade]]
+{{bottom}}
+
+[[Category:Portuguese adjectives]]
+[[Category:Portuguese nouns]]
+
+----
+
+==Spanish==
+
+===Adjective===
+{{es-adj}}
+
+# [[#English|sublime]]
+
+===Verb===
+{{es-verb-form|sublimar}}
+
+# {{es-verb form of|ending=ar|mood=imperative|pers=2|formal=yes|number=singular|sublimar}}
+# {{es-verb form of|ending=ar|mood=subjunctive|tense=present|pers=1|number=singular|sublimar}}
+# {{es-verb form of|ending=ar|mood=subjunctive|tense=present|pers=2|formal=yes|number=singular|sublimar}}
+# {{es-verb form of|ending=ar|mood=subjunctive|tense=present|pers=3|number=singular|sublimar}}
+
+[[ca:sublime]]
+[[de:sublime]]
+[[et:sublime]]
+[[el:sublime]]
+[[es:sublime]]
+[[fa:sublime]]
+[[fr:sublime]]
+[[ko:sublime]]
+[[io:sublime]]
+[[it:sublime]]
+[[kn:sublime]]
+[[ku:sublime]]
+[[li:sublime]]
+[[hu:sublime]]
+[[ml:sublime]]
+[[my:sublime]]
+[[pl:sublime]]
+[[pt:sublime]]
+[[ru:sublime]]
+[[fi:sublime]]
+[[sv:sublime]]
+[[ta:sublime]]
+[[te:sublime]]
+[[chr:sublime]]
+[[vi:sublime]]
+[[zh:sublime]]
+			
+			</textarea>
+			<input id="btnGo" type="button" value="Go" /><br />
+			<textarea id="taObject" style="width:800px;height:300px"  ></textarea>
+		</div>
+	</div>
+</div>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20130526/json2.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.4.1-bundled/backbone.marionette.js"></script>
+ -->
+ <script type="text/javascript">
+ 
+	$(function(){
+		var $btnGo = $("#btnGo");
+		var $tarRaw = $("#tarRaw");
+		var $taObject = $("#taObject");
+	
+		$btnGo.bind( "click", function() {
+			var str = $tarRaw.val();
+			$taObject.val("");
+			parseTextStr(str);
+		
+		});
+		
+		// prepare parsing
+		parseTextStr = function(str){
+			var obj = {};
+			str = str.replace(/(\r\n|\n|\r)/gm," ");
+			parseStr(str, obj, 2);
+			
+			$taObject.val(JSON.stringify(obj,null,2));
+		};
+		// this is recursive parsing
+		parseStr = function(str, obj, level, keepRawContent){
+			/* function that returns an object with one key for every language
+			and content as value; 
+			*/
+			var str = str || "";
+			var obj = obj || {};
+			var level = level || 2;
+			var keepRawContent = keepRawContent || false;
+			var separator = level == 2 ? "==" : level == 3 ? "===" : "===="; 
+			var pattern = "[^=]"+ separator +"([^=]+)" + separator;
+			var re = new RegExp(pattern,"gim"); ///[^=]==([^=]+)==/gim;
+			var mat;
+
+			var startParse = -1;
+			var endParse = 0;
+			var content;
+			var lastMatch;
+			var hasParsed = false;
+
+			while ((mat=re.exec(str)) != null) {
+
+				//console.log('lastIndex now at: ' + re.lastIndex);
+				//console.log('match index at: ' + mat.index);
+				//console.log(mat);
+				
+				if(startParse > -1)
+				{
+					// lastMatch1 is the header content
+					parseRawContentByKey(str, startParse, mat.index+1, lastMatch, obj, level, keepRawContent);
+				}
+				startParse = re.lastIndex;
+				lastMatch = mat;
+			}
+			// parse to end
+			if(str && obj){
+				hasParsed = parseRawContentByKey(str, startParse, str.length, lastMatch, obj, level, keepRawContent);
+			}
+
+			return hasParsed;
+			
+		};
+		/*
+		* parses the string from start to end
+		* lastMatch is the last header like ==Verb== or with more =
+		* obj is the json object we complete
+		* level is the number of = in the header (2..4)
+		*/
+		parseRawContentByKey = function(str, startParse, endParse, lastMatch, obj, level, keepRawContent){
+			if(lastMatch){
+				var head = lastMatch[1];
+				var text = str.substring(startParse,endParse);
+				var hasParsed = false;
+				
+				obj[head] = {};
+				if(keepRawContent){
+					obj[head].rawContent = text;
+				}
+				
+				if(head == "Translations"){
+					hasParsed = parseTranslation(text, obj[head]);
+				}
+
+				level ++;
+				if(level <= 4){
+					hasParsed = parseStr(text, obj[head], level, keepRawContent);
+					if( ! hasParsed){
+						obj[head].rawContent = text;
+					}
+				}
+				else{
+					obj[head].rawContent = text;
+				}
+				level --;
+				return true;
+			}
+			else{
+				return false;
+			}
+		};
+		
+		parseTranslation = function(str, obj){
+			/* function that returns an object with the word senses for every language
+			"Senses": [
+			"noble and majestic": {
+				"French":["sublime"],
+				"German": ["hehr","erhaben","nobel","sublim"],
+				"Russian": ["возвышенный","величественный"],
+				"Spanish": ["sublime"],
+			},
+			"impressive and awe-inspiring": {
+				"German": ["grandios","vortrefflich"]
+			}
+			]		
+			
+				
+			each sense starts with: {{trans-top|noble and majestic}}
+					and ends with: {{trans-bottom}}
+					
+			each language within a sense starts with "* French:" (where French is an example)
+			the translations for each language : {{t+|de|hehr}}, {{t+|de|erhaben}} until end of line
+			*/			
+			var str = str || "";
+			var obj = obj || {};
+			var patStart = "\{\{trans-top\|([^}]+)\}\}";
+			var patEnd = "\{\{trans-bottom\}\}";
+			var reStart = new RegExp(patStart,"gim"); 
+			var reEnd = new RegExp(patEnd,"gim"); 
+			var mat;
+
+			var startParse = -1;
+			var endParse = 0;
+			var sense;
+			var lastMatch;
+			var hasParsed = false;
+
+			while ((mat=reStart.exec(str)) != null) {
+				console.log('lastIndex now at: ' + reStart.lastIndex);
+				console.log('match index at: ' + mat.index);
+				console.log(mat);
+				
+				mat2 = reEnd.exec(str);
+				if(mat2 != null){
+					sense = str.substring(reStart.lastIndex, mat2.index);	
+					hasParsed = true;
+				}
+			}
+			return hasParsed;
+			
+		}
+
+	});
+	
+
+</script>
+ 
+</body>
+</html>
+

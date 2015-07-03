@@ -1,0 +1,166 @@
+
+/*html5 semantics tags */
+article, aside, figure, footer, header, hgroup, menu, nav, section 
+{
+    display: block;
+    /*border: 1px solid #eee;*/
+}
+
+body {
+    background-color:#fff;
+	font-family: Arial;
+	color:#666;
+    }
+a {
+	text-decoration:none;
+    }
+
+/* light css reset */
+* { margin : 0; padding : 0; }
+/*h2, h3, h4, h5, p, ul, ol  { }*/
+img { border: 0px;}
+
+/* =page level container */
+#pageContainer {
+    margin: 0px auto 0px auto;
+	width: 960px;
+}
+
+#pageHeader {
+    margin:0px auto 0px auto;
+    width:960px;
+    height:50px;
+    position:relative;
+	color: #aaa; 
+}
+
+#contentContainer {
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    min-height: 500px;
+}
+
+#pageFooter {
+    margin: 0px auto;
+    padding-bottom: 20px;
+	width: 960px;
+	position: relative;
+	background-color:#f2f2f2;
+}
+
+/* Clear Floated Elements */
+.clearfix:before, .clearfix:after {
+    content: "\0020"; display: block; height: 0; visibility: hidden;
+}
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+#tagList {
+    float:left;
+    width:170px;
+    min-height:500px;    
+    font-weight:bold;
+	color: #aaa; 
+    padding-right:20px;
+    /*text-transform: uppercase;*/
+	}
+	#tagList .inclu{
+		margin-bottom: 20px;
+	}
+	#tagList .inclu a{
+		border-left: 5px solid #ddd;
+		color: #666; 
+		}
+	#tagList .dispo a{
+		color: #aaa; 
+		}
+		#tagList .dispo a.active, #tagList .dispo a:hover{
+			border-left: 5px solid #ddd;
+			}
+
+	#tagList li{
+		list-style-type: none;
+		}
+		#tagList li span{
+			display:block;
+			}
+		#tagList li .txt{
+		    float:left;		    
+		    width:115px;
+			}			
+		#tagList li .count{
+		    font-size:10px;
+		    float:right;		
+		    padding-top:10px;
+			}
+		#tagList li .plus, #tagList li .minus{
+		    font-size:14px;
+		    float:right;	
+			color:#fff;
+			}
+			#tagList li  a:hover .plus, #tagList li a:hover .minus{
+				color:#aaa;
+			}
+
+		#tagList li a {
+			display: block;
+			float:left;
+			border-bottom: 1px dotted #f0f0f0;
+			border-left: 5px solid #fff;
+			margin: 5px 0 0 0;
+			padding: 5px 5px 5px 5px;
+			font-size: 14px;
+			width:135px;
+
+			}
+			#tagList li a.active, #tagList li a:hover {
+				color: #000; 
+				background-color:#f5f5f5;
+				border-bottom: 1px dotted #ddd;
+			}
+    #articleList li {
+		list-style-type: none;
+		}
+        #articleList li a {
+			display: block;
+			border-bottom: 1px dotted #f0f0f0;
+			margin: 5px 5px 0 0;
+			padding: 5px 10px 5px 5px;
+			font-size: 14px;
+			}
+			#articleList li a.active, #articleList li a:hover {
+				color: #000; 
+				background-color:#f5f5f5;
+				border-bottom: 1px dotted #ddd;
+			}
+
+    
+#tagListHeader{
+    height:50px;    
+}
+#articleList{
+    float:left;
+    width:350px;
+    min-height:500px;    
+}
+	#articleList li{
+		list-style-type: none;
+		}
+#articleListHeader{
+    height:50px;    
+}
+#contentSection{
+    float:left;
+    width:450px;
+}
+#contentHeader {
+    height:50px;
+}
+#contentArticle {
+    min-height:500px;
+}
+#contentFooter {
+    min-height:50px;
+}

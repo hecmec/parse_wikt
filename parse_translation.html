@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>parse Text</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="teststyle.css">
+</head>
+<body>
+
+
+<div id="pageContainer">
+	<header id="pageHeader">
+	    <h1>parser WK</h1>
+	</header>
+    <div id="contentContainer" class="clearfix">
+		<div>
+<!--  {{trans-top|noble and majestic}} * Armenian: {{t|hy|վեհ|tr=veh}} * Catalan: {{t|ca|sublim}} * Chinese: *: Mandarin: {{t+|cmn|崇高|tr=chónggāo|sc=Hani}} * Czech: {{t|cs|vznešený}} * Danish: {{t|da|sublim}} * Finnish: {{t|fi|ylevä}}, {{t|fi|ylhäinen}} * French: {{t+|fr|sublime}} * German: {{t+|de|hehr}}, {{t+|de|erhaben}}, {{t+|de|nobel}}, {{t+|de|sublim}} * Hungarian: {{t+|hu|nemes}}, {{t+|hu|előkelő}} * Japanese: {{t+|ja|崇高|tr=すうこう, sūkō|sc=Jpan}}, {{t|ja|高邁|tr=こうまい, kōmai|sc=Jpan}} {{trans-mid}} * Korean: {{t|ko|숭고한|tr=sunggohan|sc=Kore}} * Macedonian: {{t|mk|возвишен|m|tr=vózvišen}} * Polish: {{t|pl|wzniosły}} * Portuguese: {{t+|pt|sublime}} * Russian: {{t+|ru|возвышенный|tr=vozvýšennyj|sc=Cyrl}}, {{t+|ru|величественный|tr=velíčestvennyj|sc=Cyrl}} * Serbo-Croatian: *: Cyrillic: {{t|sh|у̀звӣшен|m}} *: Roman: {{t|sh|ùzvīšen|m}} * Spanish: {{t+|es|sublime}} {{trans-bottom}}  {{trans-top|impressive and awe-inspiring}} * Armenian: {{t|hy|վեհ|tr=veh}} * Catalan: {{t|ca|sublim}} * Finnish: {{t|fi|hämmästyttävä}} * German: {{t+|de|grandios}}, {{t|de|vortrefflich}} * Greek: {{t+|el|επιβλητικός|tr=epivlitikós|sc=Grek}} {{trans-mid}} * Hungarian: {{t+|hu|fenséges}}, {{t+|hu|emelkedett}}, {{t+|hu|fennkölt}}, {{t+|hu|magasztos}} * Macedonian: {{t|mk|возвишен|m|tr=vózvišen}} * Russian: {{t+|ru|впечатляющий|tr=vpečatljájuščij}}, {{t+|ru|потрясающий|tr=potrjasájuščij}} * Spanish: {{t+|es|sublime}}, {{t|es|portentoso}} {{trans-bottom}} 
+ -->			
+			<textarea id="tarRaw" style="width:800px;height:100px"  >
+ {{trans-top|impressive and awe-inspiring}} 
+* Armenian: {{t|hy|վեհ|tr=veh}} 
+* Catalan: {{t|ca|sublim}} 
+* Finnish: {{t|fi|hämmästyttävä}} 
+* German: {{t+|de|grandios}}, {{t|de|vortrefflich}} 
+* Greek: {{t+|el|επιβλητικός|tr=epivlitikós|sc=Grek}} {{trans-mid}} 
+* Hungarian: {{t+|hu|fenséges}}, {{t+|hu|emelkedett}}, {{t+|hu|fennkölt}}, {{t+|hu|magasztos}} 
+* Macedonian: {{t|mk|возвишен|m|tr=vózvišen}} 
+* Russian: {{t+|ru|впечатляющий|tr=vpečatljájuščij}}, {{t+|ru|потрясающий|tr=potrjasájuščij}} 
+* Spanish: {{t+|es|sublime}}, {{t|es|portentoso}} 
+{{trans-bottom}} 
+
+{{trans-top|noble and majestic}} 
+* Armenian: {{t|hy|վեհ|tr=veh}} 
+* Catalan: {{t|ca|sublim}} 
+* Czech: {{t|cs|vznešený}} 
+* Danish: {{t|da|sublim}} 
+* Finnish: {{t|fi|ylevä}}, {{t|fi|ylhäinen}} 
+* French: {{t+|fr|sublime}} 
+* German: {{t+|de|hehr}}, {{t+|de|erhaben}}, {{t+|de|nobel}}, {{t+|de|sublim}} 
+* Hungarian: {{t+|hu|nemes}}, {{t+|hu|előkelő}} 
+* Macedonian: {{t|mk|возвишен|m|tr=vózvišen}} 
+* Polish: {{t|pl|wzniosy}} 
+* Portuguese: {{t+|pt|sublime}} 
+* Russian: {{t+|ru|возвышенный|tr=vozvýšennyj|sc=Cyrl}}, {{t+|ruеличественный|tr=velíčestvennyj|sc=Cyrl}} 
+* Serbo-Croatian: {{t|sh|у̀звшен|m}} 
+* Spanish: {{t+|es|sublime}} 
+{{trans-bottom}} 
+			
+			</textarea>
+			<input id="btnGo" type="button" value="Go" /><br />
+			<textarea id="taObject" style="width:800px;height:300px"  ></textarea>
+		</div>
+	</div>
+</div>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20130526/json2.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.4.1-bundled/backbone.marionette.js"></script>
+ -->
+ <script type="text/javascript">
+ 
+	$(function(){
+		var $btnGo = $("#btnGo");
+		var $tarRaw = $("#tarRaw");
+		var $taObject = $("#taObject");
+	
+		$btnGo.bind( "click", function() {
+			var str = $tarRaw.val();
+			$taObject.val("");
+			parseTextStr(str);
+		
+		});
+		
+		// prepare parsing
+		parseTextStr = function(str){
+			var obj = {};
+			str = str.replace(/(\r\n|\n|\r)/gm," ");
+			parseTranslation(str, obj);
+			
+			$taObject.val(JSON.stringify(obj,null,2));
+		};
+		//get the n​th capturing group for each match:
+		getMatches = function(string, regex, index) {
+			index || (index = 1); // default to the first capturing group
+			var matches = [];
+			var match;
+			while (match = regex.exec(string)) {
+				matches.push(match[index]);
+			}
+			return matches;
+		}
+
+		parseTranslation = function(str, obj){
+			/* function that returns an object with the word senses for every language
+			"senses": [
+			{
+				"sense":"noble and majestic",
+				"languages":[
+					"French":["sublime"],
+					"German": ["hehr","erhaben","nobel","sublim"],
+					"Russian": ["возвышенный","величественный"],
+					"Spanish": ["sublime"],
+				]
+			},
+			{
+				"sense":"impressive and awe-inspiring",
+				"languages":[
+					"German": ["grandios","vortrefflich"]
+				]
+			}
+			]		
+			
+				
+			each sense starts with: {{trans-top|noble and majestic}}
+					and ends with: {{trans-bottom}}
+					
+			each language within a sense starts with "* French:" (where French is an example)
+			the translations for each language : {{t+|de|hehr}}, {{t+|de|erhaben}} until end of line
+			*/			
+			var str, obj, 
+			rTrans, rTSingle, rTLang, regex, 
+			mat, sense, senseContent;
+			
+			str = str || "";
+			obj = obj || {};
+			obj.senses = [];
+
+			var regex = /\{\{trans-top\|([^}]+)\}\}(.+?)\{\{trans-bottom\}\}/gm;
+			//var mat = regex.exec(str);
+			mat;
+			while ((mat=regex.exec(str)) != null) {
+				console.log('lastIndex now at: ' + regex.lastIndex);
+				console.log('match index at: ' + mat.index);
+				console.log(mat);
+				sense = mat.length > 1 ? mat[1] : "";
+				if(sense){
+					senseContent = mat.length > 2 ? mat[2] : "no sense content found";
+					var senseObj = {
+						"sense":sense,
+						"rawContent":senseContent
+						};
+					obj.senses.push(senseObj);
+				}
+			}
+			
+			$taObject.val(JSON.stringify(obj,null,2));
+			//var x = mat[0];
+			/*
+			var patStart = "\{\{trans-top\|([^}]+)\}\}";
+			var patEnd = "\{\{trans-bottom\}\}";
+			var reStart = new RegExp(patStart,"gim"); 
+			var reEnd = new RegExp(patEnd,"gim"); 
+			var mat;
+
+			var startParse = -1;
+			var endParse = 0;
+			var sense;
+			var lastMatch;
+			var hasParsed = false;
+
+			while ((mat=reStart.exec(str)) != null) {
+				console.log('lastIndex now at: ' + reStart.lastIndex);
+				console.log('match index at: ' + mat.index);
+				console.log(mat);
+				
+				mat2 = reEnd.exec(str);
+				if(mat2 != null){
+					sense = str.substring(reStart.lastIndex, mat2.index);	
+					hasParsed = true;
+				}
+			}
+			return hasParsed;
+			*/
+		}
+
+	});
+	
+
+</script>
+ 
+</body>
+</html>
+

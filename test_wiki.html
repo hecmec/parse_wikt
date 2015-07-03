@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>parser WK</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="teststyle.css">
+
+<!--[if IE]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+</head>
+<body>
+
+
+<div id="pageContainer">
+	<header id="pageHeader">
+	    <h1>parser WK</h1>
+	</header>
+    <div id="contentContainer" class="clearfix">
+		<div>
+			function getTranslationPos(
+			"en",
+			<input id="queryLang1" type="text" style="width:25px" value="fr" />,
+			<input id="textBoxPos" type="text" style="width:70px" value="Noun" />,
+			<input id="textBoxExp" type="text" style="width:70px" value="hive" />) =
+			<input id="textBoxResult" type="text" style="width:200px" readonly />
+			<input id="btnGo1" type="button" value="Go" />
+			<br><br>
+		</div>
+		<div>
+			function getTranslation(
+			"en",
+			<input id="queryLang2" type="text" style="width:25px" />) =
+			<textarea id="getTranslationResult" type="text" style="width:200px;height:30px"></textarea>
+			<input id="btnGo2" type="button" value="Go" />
+			<br><br>
+		</div>
+
+		<div>
+			<input id="queryUrl" type="text" style="width:800px"
+			value="http://en.wiktionary.org/w/api.php?action=parse&format=json&page=sublime&prop=wikitext&callback=?" /><br />
+			<input id="btnGo3" type="button" value="Go" /><br />
+			<textarea id="tarRaw" style="width:800px;height:800px">dd</textarea>
+		</div>
+	</div>
+</div>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20130526/json2.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.4.1-bundled/backbone.marionette.js"></script>
+ -->
+ <script type="text/javascript">
+ 
+	$(function(){
+		var $textBoxQuery = $("#queryUrl");
+		var $btnGo1 = $("#btnGo1");
+		var $btnGo2 = $("#btnGo2");
+		var $btnGo3 = $("#btnGo3");
+		var $textBoxPos = $("#textBoxPos");
+		var $textBoxExp = $("#textBoxExp");
+		var $textBoxResult = $("#textBoxResult");
+		
+		var $tarRaw = $("#tarRaw");
+		var $textBoxLang1 = $("#queryLang1");
+		var $textBoxLang2 = $("#queryLang2");
+		
+		$btnGo3.bind( "click", function() {
+			var url = $textBoxQuery.val();
+			callWiki(url);
+		});
+		$btnGo1.bind( "click", function() {
+			var langFrom = 'en';
+			var langTo = $textBoxLang1.val();
+			var word = $textBoxExp.val();
+			var pos = $textBoxExp.val();
+
+			getTranslation(langFrom, langTo, word, pos);
+		});
+		
+		var WikiLang = {
+			"en":"English",
+			"fr":"French",
+			"ar":"Arabic",
+			"de":"German",
+			"el":"Greek",
+			"it":"Italian",
+			"ru":"Russian",
+			"es":"Spanish"
+		}
+
+		
+		
+		function callWiki(url){
+		//$.getJSON("http://en.wikipedia.org/w/api.php?action=parse&format=json&callback=?", {page:"Football", prop:"text"}, function(data) {console.log(data);});
+		
+			var jqxhr = $.getJSON( url, function( data ) {
+				var wText = data.parse.wikitext['*'];
+				
+				$tarRaw.val(wText);
+				
+				})
+				.done(function() {
+					console.log( "second success" );
+				})
+				.fail(function() {
+					console.log( "error" );
+				})
+				.always(function() {
+					console.log( "complete" );
+				});
+			
+			
+		}
+		
+		function getTranslation(from, to, word, pos){
+			var langFrom = WikiLang[from];
+			var langTo = WikiLang[to];
+			var url = "http://en.wiktionary.org/w/api.php?action=parse&format=json&page="+word+"&prop=wikitext&callback=?"
+			console.log(url);
+			var wText ="";
+			
+			$.getJSON( url, function( data ) {
+				if(data && data.parse){
+					wText = data.parse.wikitext['*'];
+					$tarRaw.val(wText);
+					parseWikiAnswer(wText);
+				}
+				
+			})
+
+		}
+	
+		function parseWikiAnswer(wText){
+	
+			//var re = /(==English==)((\s+(.+))+?)(\s==\w)/mi; // second match group is it
+			var reLang = /==[^=]+==/gmi;
+			var langIndexes = [];
+			var i;
+	 
+			do {
+				i = wText.search(reLang);
+				langIndexes.push(i);
+				console.log(langIndexes.toString());
+			}
+			while (i > -1)
+		}
+
+		function t(){
+		/* function that returns an object with one key for every language
+		and content as value; 
+		*/
+
+			var re = /[^=]==([^=]+)==/gim;
+			var str = 'bla ==English== qsdf ===heute=== aozeiru ==German== qlskdf [[wwww]]  xxx ';
+			var mat;
+			var result = {};
+			var startParse = -1;
+			var endParse = 0;
+			var lang;
+			var content;
+			var lastMatch;
+
+			while ((mat=re.exec(str)) != null) {
+				lastMatch = mat;
+				console.log('lastIndex now at: ' + re.lastIndex);
+				console.log('match index at: ' + lastMatch.index);
+				console.log(lastMatch);
+				
+				if(lang && startParse > -1)
+				{
+					endParse = lastMatch.index;
+					content = str.substring(startParse,endParse);
+					lang = lastMatch[1];
+					result[lang] = content;
+				}
+				
+				startParse = re.lastIndex;
+			}
+			endParse = str.length;
+			content = str.substring(startParse,endParse);
+			lang = lastMatch[1];
+			result[lang] = content;
+
+
+			console.log(result);
+		}
+		
+		
+	});
+	
+
+</script>
+ 
+</body>
+</html>
